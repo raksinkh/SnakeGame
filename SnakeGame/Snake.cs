@@ -71,6 +71,7 @@ namespace SnakeGame
                 Snake.Debug("Start the controller");
                 sgc.Start();
                 sgv.Run();
+                SnakeGameModel.Speed = 1;
             } catch
             {
                 Snake.Debug("Error starting game");

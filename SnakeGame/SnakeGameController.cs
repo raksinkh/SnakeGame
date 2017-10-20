@@ -11,6 +11,7 @@ namespace SnakeGame
     public class SnakeGameController : Controller
     {
         Timer timer;
+        int spacecout = 0;
 
         public SnakeGameController()
         {
@@ -18,6 +19,7 @@ namespace SnakeGame
             timer = new Timer(SnakeGameModel.TIME_BASE / SnakeGameModel.Speed);
             timer.Enabled = false;
             timer.Elapsed += this.OnTimedEvent;
+            
         }
 
 
@@ -41,6 +43,15 @@ namespace SnakeGame
             else if(keys.Contains(Keys.Right))
             {
                 direction = SnakeGameModel.MOVE_RIGHT;
+            }
+            else if(keys.Contains(Keys.Space))
+            {
+                if (spacecout > 0)
+                {
+                    Start(); spacecout -= 1;
+                }
+                else { Stop(); spacecout = 1; };
+                
             }
             // Find all snakeboard model we know
             if (direction == -1) return;
